@@ -12,5 +12,32 @@
 		<config>src/main/resources/datasource/db-config.xml</config>
 	</configs>
 	<configSets>
+		<configSet>
+			<name><![CDATA[all]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/app-config.xml</config>
+				<config>src/main/resources/datasource/db-config.xml</config>
+				<config>src/main/webapp/WEB-INF/spring/app-config.xml</config>
+				<config>src/main/webapp/WEB-INF/spring/mvc-config.xml</config>
+				<config>src/main/webapp/WEB-INF/spring/mvc-java-config.xml</config>
+				<config>src/main/webapp/WEB-INF/spring/security-config.xml</config>
+				<config>src/main/webapp/WEB-INF/spring/spreadsheet-views.xml</config>
+			</configs>
+			<profiles>
+			</profiles>
+		</configSet>
+		<configSet>
+			<name><![CDATA[application]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/app-config.xml</config>
+				<config>src/main/resources/datasource/db-config.xml</config>
+			</configs>
+			<profiles>
+			</profiles>
+		</configSet>
 	</configSets>
 </beansProjectDescription>

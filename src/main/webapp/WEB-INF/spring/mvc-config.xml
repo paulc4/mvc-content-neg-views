@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+<beans profile="xml" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
@@ -23,6 +26,12 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<oxm:jaxb2-marshaller id="marshaller">
+		<oxm:class-to-be-bound name="rewardsonline.accounts.Account"/>
+		<oxm:class-to-be-bound name="rewardsonline.accounts.Customer"/>
+		<oxm:class-to-be-bound name="rewardsonline.accounts.Transaction"/>
+	</oxm:jaxb2-marshaller>
+
 	<!-- View resolver that delegates to other controllers based on the content 
 		type -->
 	<bean
@@ -39,7 +48,12 @@
 					class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 					<property name="contentType" value="text/html" />
 				</bean>
+
 				<bean class="rewardsonline.accounts.JsonViewResolver" />
+				
+				<bean class="rewardsonline.accounts.MarshallingXmlViewResolver" >
+					<constructor-arg ref="marshaller"/>
+				</bean>
 			</list>
 		</property>
 	</bean>
@@ -75,8 +89,5 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="/WEB-INF/messages/global" />
 	</bean>
-
-	<!-- Enable pretty-print on the Jackson Http Message convertor -->
-	<bean class="rewardsonline.accounts.MvcConfiguringPostProcessor"/>
 
 </beans>

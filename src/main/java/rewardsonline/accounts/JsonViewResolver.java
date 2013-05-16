@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 /**
- * View resolver for using JSON in a view-based system. Always returns a
+ * View resolver for returning JSON in a view-based system. Always returns a
  * {@link MappingJacksonJsonView}.
  */
 public class JsonViewResolver implements ViewResolver {

@@ -14,8 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonUnwrapped;
 import org.springframework.util.StringUtils;
 
 import common.money.MonetaryAmount;
@@ -26,6 +31,7 @@ import common.money.MonetaryAmount;
  */
 @Entity
 @Table(name = "T_ACCOUNT")
+@XmlRootElement
 public class Account {
 
 	private static final String NO_CREDIT_CARD = "";
@@ -36,6 +42,7 @@ public class Account {
 	public static final String CREDIT = "CREDIT";
 
 	@Id
+	@JsonIgnore
 	@Column(name = "ID")
 	private Integer entityId;
 
@@ -49,6 +56,7 @@ public class Account {
 	private String creditCardNumber;
 
 	@Embedded
+	@JsonUnwrapped
 	@AttributeOverride(name="value", column=@Column(name="BALANCE"))
 	private MonetaryAmount balance;
 
@@ -103,6 +111,7 @@ public class Account {
 	/**
 	 * Returns the number used to uniquely identify this account.
 	 */
+	@XmlAttribute
 	public String getNumber() {
 		return number;
 	}
@@ -112,6 +121,7 @@ public class Account {
 	 * 
 	 * @return One of "CREDIT", "SAVINGS", "CHECK".
 	 */
+	@XmlAttribute
 	public String getType() {
 		return type;
 	}
@@ -121,6 +131,7 @@ public class Account {
 	 * 
 	 * @return The credit-card number or null if there isn't one.
 	 */
+	@XmlAttribute
 	public String getCreditCardNumber() {
 		return StringUtils.hasText(creditCardNumber) ? creditCardNumber : null;
 	}
@@ -142,6 +153,7 @@ public class Account {
 	 * 
 	 * @return Current account balance.
 	 */
+	@XmlAttribute
 	public MonetaryAmount getBalance() {
 		return balance;
 	}
@@ -178,6 +190,7 @@ public class Account {
 	 *            the name of the transaction account e.g "Fred Smith"
 	 * @return the beneficiary object
 	 */
+	@XmlElement
 	public Set<Transaction> getTransactions() {
 		return transactions;
 	}
