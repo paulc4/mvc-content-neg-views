@@ -11,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,14 +32,11 @@ public class Customer {
 	@Column(name = "ID")
 	private Integer entityId;
 
-	@NotNull
 	@Column(name = "NUMBER")
 	private String number;
 
-	@NotNull
 	private String name;
 
-	@NotNull
 	private String username;
 
 	@Column(name = "DATE_OF_BIRTH")
