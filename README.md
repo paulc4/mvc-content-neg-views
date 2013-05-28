@@ -3,7 +3,7 @@
 Demonstration application showing the use of Content-Negotiation in Spring MVC with
 multiple Views
 
-### prerequisites
+### Prerequisites
 
 The following items should be installed in your system:
 * Maven 3 (http://www.sonatype.com/books/mvnref-book/reference/installation.html)
