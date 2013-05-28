@@ -11,22 +11,19 @@
   	<properties>
 		<!-- version numbers for dependencies that are implicitly inherited-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.framework.version>3.2.0.RELEASE</spring.framework.version>
-		<spring.security.version>3.1.3.RELEASE</spring.security.version>
-		<hibernate.version>4.1.4.Final</hibernate.version>
-		<aspectj.version>1.7.1</aspectj.version>
-		<log4j.version>1.2.14</log4j.version>
-		<slf4j.version>1.6.4</slf4j.version>
+		<spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+		<spring.security.version>3.1.4.RELEASE</spring.security.version>
+		<hibernate.version>4.2.1.Final</hibernate.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.5</slf4j.version>
 		<cglib.version>2.2.2</cglib.version>
-		<junit.version>4.10</junit.version>
-		<hsqldb.version>2.2.8</hsqldb.version>
+		<junit.version>4.11</junit.version>
+		<hsqldb.version>2.2.9</hsqldb.version>
 		<servlet.version>3.0.1</servlet.version>
 		<jstl.version>1.2</jstl.version>
- 		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
  		<tiles.version>3.0.1</tiles.version>
- 		<jackson.version>1.9.4</jackson.version>
-		<joda.version>2.1</joda.version>
-		<poi.version>3.0.2-FINAL</poi.version>
+ 		<jackson.version>1.9.12</jackson.version>
+		<poi.version>3.9</poi.version>
 	</properties>
 
 	<dependencies>
@@ -34,6 +31,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
 			<version>${spring.framework.version}</version>
 		</dependency>
 
@@ -63,26 +66,27 @@
 		</dependency>
 
 		<!--  Security -->
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-web</artifactId>
-				<version>${spring.security.version}</version>
-			</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-taglibs</artifactId>
-				<version>${spring.security.version}</version>
-			</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-config</artifactId>
-				<version>${spring.security.version}</version>
-			</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
 		<!-- Dependency injection: not importing spring-core, spring-beans etc because they are
 		transitive/implicit dependencies of the other Spring libs such as spring-tx) -->
+
 		<!-- Database access -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -148,17 +152,11 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>${cglib.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate.validator.version}</version>
-		</dependency>
-
+<!-- 		<dependency> -->
+<!-- 			<groupId>cglib</groupId> -->
+<!-- 			<artifactId>cglib</artifactId> -->
+<!-- 			<version>${cglib.version}</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Views -->
 		<dependency>
@@ -173,7 +171,7 @@
 			</exclusions>
 		</dependency>	
 		<dependency>
-			<groupId>poi</groupId>
+			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>${poi.version}</version>
 		</dependency>
@@ -182,11 +180,6 @@
 	    	<artifactId>jackson-mapper-asl</artifactId>
 	        <version>${jackson.version}</version>
 	    </dependency>	
-	    <dependency>
-	        <groupId>joda-time</groupId>
-	        <artifactId>joda-time</artifactId>
-	        <version>${joda.version}</version>
-	    </dependency>		
 	</dependencies>
 	
 	<build>
