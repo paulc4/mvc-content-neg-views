@@ -13,9 +13,10 @@
 
 	<tx:annotation-driven />
 
-	<!-- Loads accounts from the data source -->
-	<bean id="accountRepository" class="rewardsonline.accounts.repository.JpaAccountManager" />
+	<!-- Provides access to accounts -->
+	<bean id="accountManager" class="rewardsonline.accounts.service.JpaAccountManager" />
 
+	<!--  JPA configuration -->
 	<bean id="emFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -33,6 +34,7 @@
 		</property>
 	</bean>
 
+	<!--  Spring's JPA Transaction Manager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emFactory" />
 	</bean>
