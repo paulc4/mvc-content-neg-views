@@ -9,7 +9,9 @@
 							http://www.springframework.org/schema/tx
 							http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<!-- Import configuration from the datasource and the rewardnetwork projects -->
+	<!-- Import configuration from the datasource -->
 	<import resource="classpath:datasource/db-config.xml" />
+
+	<!-- Import configuration from the accounts application -->
 	<import resource="classpath:app-config.xml" />
 </beans>

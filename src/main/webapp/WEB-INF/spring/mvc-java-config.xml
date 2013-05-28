@@ -9,7 +9,7 @@
 	<!-- Use Java configuration. Set "javaconfig" profile in web.xml -->
 
 	<!-- Create this configuration as a bean, it creates everything else. -->
-	<bean class="rewardsonline.accounts.MvcConfiguration" />
+	<bean class="rewardsonline.accounts.controller.MvcConfiguration" />
 
 	<!-- Enable all the annotations - normally enabled by component-scanner. -->
 	<context:annotation-config />

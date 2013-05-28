@@ -49,9 +49,9 @@
 					<property name="contentType" value="text/html" />
 				</bean>
 
-				<bean class="rewardsonline.accounts.JsonViewResolver" />
+				<bean class="rewardsonline.accounts.view.JsonViewResolver" />
 				
-				<bean class="rewardsonline.accounts.MarshallingXmlViewResolver" >
+				<bean class="rewardsonline.accounts.view.MarshallingXmlViewResolver" >
 					<constructor-arg ref="marshaller"/>
 				</bean>
 			</list>
