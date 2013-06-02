@@ -1,4 +1,4 @@
-package rewardsonline.accounts.controller;
+package rewardsonline.accounts.web;
 
 import java.security.Principal;
 

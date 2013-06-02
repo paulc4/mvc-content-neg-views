@@ -1,7 +1,7 @@
 package rewardsonline.accounts.controller;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +11,7 @@ import org.springframework.ui.ExtendedModelMap;
 import rewardsonline.accounts.Account;
 import rewardsonline.accounts.Customer;
 import rewardsonline.accounts.StubAccountManager;
+import rewardsonline.accounts.web.AccountsController;
 
 import com.sun.net.httpserver.HttpPrincipal;
 

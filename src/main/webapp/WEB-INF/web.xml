@@ -25,9 +25,10 @@
 	</context-param>
 
 	<!-- Specify "xml" or "javaconfig" --> 
+	<!-- Specify "separate" or "combined" --> 
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
-		<param-value>xml</param-value>
+		<param-value>xml,combined</param-value>
 	</context-param>
 
 	<listener>
