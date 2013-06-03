@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -52,6 +53,9 @@ import rewardsonline.accounts.view.MarshallingXmlViewResolver;
 public class MvcConfiguration2 extends WebMvcConfigurerAdapter {
 
 	protected Logger logger = Logger.getLogger(MvcConfiguration2.class);
+
+	@Autowired
+	protected ServletContext servletContext;
 
 	public MvcConfiguration2() {
 		logger.warn("Profile 'combined' - only CNVR is a top-level bean, all other view resolvers belong to CNVR.");
@@ -113,10 +117,10 @@ public class MvcConfiguration2 extends WebMvcConfigurerAdapter {
 	 */
 	@Bean
 	public ViewResolver contentNegotiatingViewResolver(
-			ContentNegotiationManager manager, ServletContext servletContext) {
+			ContentNegotiationManager manager) {
 		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
 		resolvers.add(getTilesViewResolver());
-		resolvers.add(getXmlViewResolver(servletContext));
+		resolvers.add(getXmlViewResolver());
 		resolvers.add(getJsonViewResolver());
 		resolvers.add(getMarshallingXmlViewResolver());
 
@@ -133,7 +137,7 @@ public class MvcConfiguration2 extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 
-	private ViewResolver getXmlViewResolver(ServletContext servletContext) {
+	private ViewResolver getXmlViewResolver() {
 		XmlViewResolver resolver = new XmlViewResolver();
 		resolver.setLocation(new ServletContextResource(servletContext,
 				"/WEB-INF/spring/spreadsheet-views.xml"));

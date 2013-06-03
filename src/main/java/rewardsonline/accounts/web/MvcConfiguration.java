@@ -3,6 +3,7 @@ package rewardsonline.accounts.web;
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -49,6 +50,9 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
 	protected Logger logger = Logger.getLogger(MvcConfiguration.class);
 
+	@Autowired
+	protected ServletContext servletContext;
+
 	public MvcConfiguration() {
 		logger.warn("Profile 'separate' - view resolvers defined as separate top-level beans.");
 	}
@@ -94,7 +98,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean(name = "excelViewResolver")
-	public ViewResolver getXmlViewResolver(ServletContext servletContext) {
+	public ViewResolver getXmlViewResolver() {
 		XmlViewResolver resolver = new XmlViewResolver();
 		resolver.setLocation(new ServletContextResource(servletContext,
 				"/WEB-INF/spring/spreadsheet-views.xml"));
