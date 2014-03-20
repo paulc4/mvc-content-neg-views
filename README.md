@@ -26,5 +26,5 @@ File -> Import -> Maven -> Existing Maven projects
 ```
 2b) Alternatively, import as Eclipse projects
 ```
-mvn eclipse:eclipse
+mvn eclipse:eclipse -Dwtpversion=2.0
 File -> Import -> General -> Existing Projects Into Workspace
